@@ -13,23 +13,24 @@ export class FoodStore {
         this.foodItems = value
     }
 
-    public getFoodItems = () => this.foodItems
-
-    getFoodItemsAction = () => {
+    getFoodItemsAction() {
         getFoodItemsApi()
             .then(data => this.setFoodItems(data))
             .catch(err => {
-                this.setFoodItems([])
+                this.setFoodItems([
+                    {id: 1, foodName: 'Ga chien nuoc mam'},
+                    {id: 2, foodName: 'Ga kho gung'}
+                ])
                 console.log(err)
             })
     }
 
-    addFoodItemsAction = (items: FoodItem[]) => {
+    addFoodItemsAction(items: FoodItem[]) {
         addFoodItemsApi(items)
             .then(data => this.foodItems.concat(data))
     }
 
-    removeFoodItemAction = (id: number) => {
+    removeFoodItemAction(id: number) {
         removeFoodItemApi(id)
             .then(data => {
                 var removedIndex = this.foodItems.findIndex(x => x.id === data)

@@ -1,25 +1,23 @@
 import React from 'react';
 import './App.css';
-import { useQuery } from '@apollo/client';
-import { GET_FOOD_ITEMS } from './apollo-api/queries';
 import { FoodStore } from './stores/food';
 import { observer } from 'mobx-react-lite';
+import DemoAxiosComponent from './components/DemoAxiosComponent';
+import { ApolloProvider } from '@apollo/client';
+import { client } from './apollo-api/apollo-client';
+import { DemoGraphqlComponent } from './components/DemoGraphqlComponent';
 
 
-const App: React.FC<any> = (foodStore: FoodStore) => {
+const App: React.FC<any> = (props) => {
 
-  const { data, error } = useQuery(GET_FOOD_ITEMS)
-  console.log(data)
-  console.log(error)
+  const foodStore = new FoodStore()
   
   return (
     <div className="App">
-      {foodStore.getFoodItems().map((item) => (
-        <div>
-          <span>{item.foodName}</span>
-          <br />
-        </div>
-      ))}
+      <DemoAxiosComponent foodStore={foodStore} />
+      <ApolloProvider client={client}>
+        <DemoGraphqlComponent />
+      </ApolloProvider>
     </div>
   );
 }
