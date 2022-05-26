@@ -1,36 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import DemoAxiosComponent from './components/DemoAxiosComponent';
 import { FoodStore } from './stores/food';
 
-type Props = {
-  foodStore: FoodStore
-}
 
-export const App: React.FC<Props> = ({foodStore}) => {
 
-  const [reload, setReload] = useState(false)
+export const App: React.FC<any> = (props) => {
 
-  useEffect(() => {
-
-    foodStore.getFoodItemsAction()
-  }, [foodStore])
-  
-  const onClick = () => {
-    setReload(!reload)
-  }
+  const foodStore = new FoodStore()
 
   return  (
     <div className="App">
-      {foodStore.getFoodItems().map((item) => (
-        <div key={item.id}>
-          <span >{item.foodName}</span>
-          <br />
-        </div>
-      ))}
-      <button type='button' name='Reload' onClick={onClick}>Reload</button>
+      
       {/* <ApolloProvider client={client}>
       </ApolloProvider> */}
         {/* <ApolloView /> */}
+      <DemoAxiosComponent foodStore={foodStore} />
+      {/* <ApolloProvider client={client}>
+        <DemoGraphqlComponent />
+      </ApolloProvider> */}
     </div>
   );
 }
