@@ -1,1 +1,1 @@
-export const FOOD_URL = '/food'
+export const FOODS_URL = '/foods'

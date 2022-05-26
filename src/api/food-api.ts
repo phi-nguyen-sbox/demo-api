@@ -1,17 +1,17 @@
 import { FoodItem } from '../models/food-item';
 import { axiosInstance } from './axios-instance';
-import { FOOD_URL } from './urls';
+import { FOODS_URL } from './urls';
 
 export const getFoodItemsApi = async () => {
     const response = await axiosInstance
-        .get<FoodItem[]>(FOOD_URL);
+        .get<FoodItem[]>(FOODS_URL);
 
     return response.data;
 }
 
 export const addFoodItemsApi = async (items: FoodItem[]) => {
     const response = await axiosInstance
-        .put<FoodItem[]>(FOOD_URL, items);
+        .put<FoodItem[]>(FOODS_URL, items);
     
     const result: FoodItem[] = response.data;
     return result;
@@ -19,7 +19,7 @@ export const addFoodItemsApi = async (items: FoodItem[]) => {
 
 export const removeFoodItemApi = async (id: number) => {
     const response = await axiosInstance
-        .delete<number>(FOOD_URL, { params: { id } });
+        .delete<number>(FOODS_URL, { params: { id } });
 
     return response.data;
 }

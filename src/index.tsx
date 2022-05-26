@@ -1,10 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { ApolloProvider } from '@apollo/client';
-import { client } from './apollo-api/apollo-client';
 import { FoodStore } from './stores/food';
-import App from './App';
+import { App } from './App';
+import { StrictMode } from 'react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,9 +12,9 @@ const root = ReactDOM.createRoot(
 const foodStore = new FoodStore()
 
 root.render(
-  <ApolloProvider client={client}>
-    <App foodStore={foodStore}/>
-  </ApolloProvider>
+  <StrictMode>
+    <App foodStore={foodStore}  />
+  </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

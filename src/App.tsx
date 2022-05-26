@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { useQuery } from '@apollo/client';
-import { GET_FOOD_ITEMS } from './apollo-api/queries';
 import { FoodStore } from './stores/food';
-import { observer } from 'mobx-react-lite';
 
+type Props = {
+  foodStore: FoodStore
+}
 
-const App: React.FC<any> = (foodStore: FoodStore) => {
+export const App: React.FC<Props> = ({foodStore}) => {
 
-  const { data, error } = useQuery(GET_FOOD_ITEMS)
-  console.log(data)
-  console.log(error)
+  const [reload, setReload] = useState(false)
+
+  useEffect(() => {
+
+    foodStore.getFoodItemsAction()
+  }, [foodStore])
   
-  return (
+  const onClick = () => {
+    setReload(!reload)
+  }
+
+  return  (
     <div className="App">
       {foodStore.getFoodItems().map((item) => (
-        <div>
-          <span>{item.foodName}</span>
+        <div key={item.id}>
+          <span >{item.foodName}</span>
           <br />
         </div>
       ))}
+      <button type='button' name='Reload' onClick={onClick}>Reload</button>
+      {/* <ApolloProvider client={client}>
+      </ApolloProvider> */}
+        {/* <ApolloView /> */}
     </div>
   );
 }
-
-export default observer(App)
