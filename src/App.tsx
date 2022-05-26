@@ -1,6 +1,9 @@
+import { ApolloProvider } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
+import { client } from './apollo-api/apollo-client';
 import './App.css';
-import DemoAxiosComponent from './components/DemoAxiosComponent';
+import { DemoAxiosComponent } from './components/DemoAxiosComponent';
+import { DemoGraphqlComponent } from './components/DemoGraphqlComponent';
 import { FoodStore } from './stores/food';
 
 
@@ -11,10 +14,6 @@ export const App: React.FC<any> = (props) => {
 
   return  (
     <div className="App">
-      
-      {/* <ApolloProvider client={client}>
-      </ApolloProvider> */}
-        {/* <ApolloView /> */}
       <DemoAxiosComponent foodStore={foodStore} />
       {/* <ApolloProvider client={client}>
         <DemoGraphqlComponent />

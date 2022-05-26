@@ -11,7 +11,10 @@ export const DemoGraphqlComponent: React.FC<any> = (props) => {
     return (
         <div>
             {(data as FoodItem[]).map((item) => (
-                <span>{item.foodName}</span>
+                <div key={item.id}>
+                    <span >{item.foodName}</span>
+                    <br />
+                </div>
             ))}
         </div>
     )

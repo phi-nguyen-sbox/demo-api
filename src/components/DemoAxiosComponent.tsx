@@ -7,7 +7,7 @@ type Props = {
   foodStore: FoodStore
 }
 
-const DemoAxiosComponent:React.FC<Props> = (props) => {
+export const DemoAxiosComponent:React.FC<Props> = (props) => {
 
     const { foodStore } = props
 
@@ -15,8 +15,6 @@ const DemoAxiosComponent:React.FC<Props> = (props) => {
 
     useEffect(() => {
         foodStore.getFoodItemsAction()
-    
-        console.log(foodStore.foodItems)
       }, [])
       
 
@@ -30,11 +28,9 @@ const DemoAxiosComponent:React.FC<Props> = (props) => {
             <div key={item.id}>
                 <span >{item.foodName}</span>
             <br />
-        </div>
-      ))}
-      <button type='button' name='Reload' onClick={onClick}>Reload</button>
+            </div>
+            ))}
+            <button type='button' name='Reload' onClick={onClick}>Reload</button>
         </div>
     )
 }
-
-export default observer(DemoAxiosComponent)
