@@ -2,21 +2,23 @@ import React from 'react';
 import { useQuery } from "@apollo/client"
 import { GET_FOOD_ITEMS } from "../apollo-api/queries"
 import { FoodItem } from "../models/food-item"
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export const DemoGraphqlComponent: React.FC<any> = (props) => {
 
-    const { data, error } = useQuery(GET_FOOD_ITEMS)
-    console.log(data)
-    console.log(error)
+    const { data, error, loading } = useQuery(GET_FOOD_ITEMS)
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+
+    const { Food } = data
 
     return (
         <div>
-            {(data as FoodItem[]).map((item) => (
-                <div key={item.id}>
-                    <span >{item.foodName}</span>
+            <span>GraphQL</span>
                     <br />
-                </div>
-            ))}
+                    <span >{Food.foodName}</span>
         </div>
     )
 }

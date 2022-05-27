@@ -14,7 +14,7 @@ export const App: React.FC<any> = (props) => {
 
   return  (
     <div className="App">
-      <DemoAxiosComponent foodStore={foodStore} />
+      {/* <DemoAxiosComponent foodStore={foodStore} /> */}
       <ApolloProvider client={client}>
         <DemoGraphqlComponent />
       </ApolloProvider>
