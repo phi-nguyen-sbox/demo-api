@@ -1,3 +1,4 @@
+import React from 'react';
 import { useQuery } from "@apollo/client"
 import { GET_FOOD_ITEMS } from "../apollo-api/queries"
 import { FoodItem } from "../models/food-item"

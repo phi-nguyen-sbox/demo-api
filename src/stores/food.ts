@@ -18,10 +18,7 @@ export class FoodStore {
         getFoodItemsApi()
             .then(data => this.setFoodItems(data))
             .catch(err => {
-                this.setFoodItems([
-                    {id: 1, foodName: 'Ga chien nuoc mam'},
-                    {id: 2, foodName: 'Ga kho gung'}
-                ])
+                this.setFoodItems([])
                 console.log(err)
             })
     }

@@ -1,0 +1,12 @@
+{
+    "foods": [
+      {
+        "id": 1,
+        "foodName": "Com ga"
+      },
+      {
+        "id": 2,
+        "foodName": "Com suon"
+      }
+    ]
+  }
