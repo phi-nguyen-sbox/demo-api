@@ -4,33 +4,33 @@ import { FoodItem } from "../models/food-item";
 import { FoodStore } from "../stores/food";
 
 type Props = {
-  foodStore: FoodStore
-}
+  foodStore: FoodStore;
+};
 
-export const DemoAxiosComponent:React.FC<Props> = (props) => {
+export const DemoAxiosComponent: React.FC<Props> = observer((props) => {
+  const { foodStore } = props;
 
-    const { foodStore } = props
+  const [reload, setReload] = useState(false);
 
-    const [reload, setReload] = useState(false)
+  useEffect(() => {
+    foodStore.getFoodItemsAction1();
+  }, [foodStore]);
 
-    useEffect(() => {
-        foodStore.getFoodItemsAction()
-      }, [])
-      
+  const onClick = () => {
+    setReload(!reload);
+  };
 
-    const onClick = () => {
-        setReload(!reload)
-    }
-      
-    return (
-        <div>
-            {foodStore.foodItems.map((item) => (
-            <div key={item.id}>
-                <span >{item.foodName}</span>
-            <br />
-            </div>
-            ))}
-            <button type='button' name='Reload' onClick={onClick}>Reload</button>
+  return (
+    <div>
+      {foodStore.foodItems.map((item) => (
+        <div key={item.id}>
+          <span>{item.foodName}</span>
+          <br />
         </div>
-    )
-}
+      ))}
+      <button type="button" name="Reload" onClick={onClick}>
+        Reload
+      </button>
+    </div>
+  );
+});
