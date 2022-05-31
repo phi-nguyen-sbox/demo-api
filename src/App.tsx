@@ -11,10 +11,10 @@ export const App: React.FC<any> = (props) => {
 
   return (
     <div className="App">
-      {/* <DemoAxiosComponent foodStore={foodStore} /> */}
-      <ApolloProvider client={client}>
+      <DemoAxiosComponent foodStore={foodStore} />
+      {/* <ApolloProvider client={client}>
         <DemoGraphqlComponent />
-      </ApolloProvider>
+      </ApolloProvider> */}
     </div>
   );
 };

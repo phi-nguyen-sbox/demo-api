@@ -10,15 +10,9 @@ type Props = {
 export const DemoAxiosComponent: React.FC<Props> = observer((props) => {
   const { foodStore } = props;
 
-  const [reload, setReload] = useState(false);
-
   useEffect(() => {
     foodStore.getFoodItemsAction1();
-  }, [foodStore]);
-
-  const onClick = () => {
-    setReload(!reload);
-  };
+  }, []);
 
   return (
     <div>
@@ -28,9 +22,6 @@ export const DemoAxiosComponent: React.FC<Props> = observer((props) => {
           <br />
         </div>
       ))}
-      <button type="button" name="Reload" onClick={onClick}>
-        Reload
-      </button>
     </div>
   );
 });

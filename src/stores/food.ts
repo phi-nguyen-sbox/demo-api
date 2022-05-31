@@ -23,7 +23,6 @@ export class FoodStore {
   }
 
   async getFoodItemsAction1() {
-    console.log("aaaaaaaaaaaaaa");
     const data = await getFoodItemsApi();
     this.setFoodItems(data);
   }
